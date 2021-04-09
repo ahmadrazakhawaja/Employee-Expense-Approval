@@ -19,7 +19,7 @@ Live Project: http://157.245.209.225/ahmad_raza_17926/public/
 This is an ERP sub module for employee expense approval process. Employees in various departments incur expenses on the company's behalf. The company later on reimburses this amount to employees. The planning and budgeting department prepares employee designation/position wise expense budgets for a year and it is broken down to months. Expenses are of different categories for example Hotel stay, transport, meal, and airfare etc. Employee submits the expenses for reimbursement via an online form. The department head approves the request and the request is now available in the Accounts Department. The system automatically rejects the request if the request amount exceeds the budget amount. If the amount is within budget, then the amount is reimbursed to the employee and an expense entry is made into the Accounting system.
 
 ## Files Description:
-**These are some of the new files which are not found in regular Django project:**
+**These are some of the files in the project:**
 
 1. **public/index.php**: 
 This is the file which faces the public. when a user types the url this page opens first. It displays the login form and process and verifies the data coming through POST request from the login form.
