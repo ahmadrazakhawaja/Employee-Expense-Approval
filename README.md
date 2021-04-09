@@ -37,5 +37,5 @@ It contains Template file for frontend. Twig is used as a templating engine.
 
 ## Deployment
 
-I have deployed this web app on a Linux based virtual private server, on top ofit Apache http server is used. 
+I have deployed this web app on a Linux based virtual private server, which uses Apache http server for request handling. 
 
