@@ -1,0 +1,78 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+
+{% if authenticated %}
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Expense Submission</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 text-center mr-2 ml-2">
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 text-center mr-2 ml-2">
+            <p>If you travelled for business purposes. Please enter the travel and return date otherwise leave it blank.</p>
+        </div>
+    </div>
+    <form action="../src/form.php" method="POST">
+    <div class="row">
+        <div class="col-lg-2 text-right">
+            <span>Select Travel Date:</span>
+        </div>
+        <div class="col-lg-2">
+            <input type="date" name="travel_date">
+        </div>
+        <div class="col-lg-2 offset-md-1 text-right">
+            <span>Retrun Date:</span>
+        </div>
+         <div class="col-lg-2">
+            <input type="date" name="return date">
+        </div>
+        <div class="col-lg-1 text-right">
+            <button class="btn btn-primary plus">+</button>
+        </div>
+        <div class="col-lg-1 text-right">
+            <button class="btn btn-primary minus">-</button>
+        </div>
+    </div>
+    <table class="table table-bordered mt-4">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Description (max 100 characters)</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <input type="Date" class="form-control" name="date[]">
+                </td>
+                <td>
+                     <textarea style="text-align: left;" class="form-control" rows="1" name="description[]" placeholder="enter description"></textarea>
+                </td>
+                <td text-center>
+                    <input type="number" class="form-control" name="amount[]" placeholder="Enter amount">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row mt-3">
+        <div class="col-lg-12 text-center">
+            <input type="submit" class="btn btn-primary form-submit">
+        </div>
+    </div>
+    </form>
+  </div>
+{% endif %}
+
+
+
+
+
+{% endblock %}

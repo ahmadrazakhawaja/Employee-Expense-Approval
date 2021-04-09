@@ -1,0 +1,81 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+
+{% if authenticated %}
+{% if submit_alert %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Form submitted successfully</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+{% endif %}
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-lg-10">
+            <h2>Expense Submission</h2>
+        </div>
+        {% if Job!=123 %}
+        <div class="col-lg-2  text-right">
+            <form action="../src/form.php" method="GET">
+                <input type="submit" class="btn btn-primary" value="New Expense Form">
+            </form>
+            </div>
+        {% endif %}
+    </div>
+    <div class="row">
+        <div class="col-lg-12 text-center mr-2 ml-2">
+            <hr>
+        </div>
+    </div>
+    <table class="table table-hover">
+    <thead>
+      <tr>
+        {% if Job!=123 %}
+        <th>Form_id</th>
+        <th>Date</th>
+        <th>Total Amount</th>
+        <th>Status</th>
+        {% else %}
+        <th>Employee id</th>
+        <th>Employee Name</th>
+        <th>Designation</th>
+        <th>Total Amount</th>
+        <th>Date Submitted</th>
+        <th>Status</th>
+        {% endif %}
+      </tr>
+    </thead>
+    <tbody>
+    {% for forms in data %}
+        {% if Job!=123 %}
+        <tr class='clickable-row' data-href=''>
+            <td>{{ forms.Form_id }}</td>
+            <td>{{ forms.submit_time }}</td>
+            <td>{{ forms.Total}}</td>
+            <td>{{ forms.Status }}</td>
+            <input type="hidden" class="form_id" name="form_id" value="{{ forms.Form_id }}">
+        </tr>
+        {% else %}
+        <tr class='clickable-row' data-href=''>
+            <td>{{ forms.emp_id }}</td>
+            <td>{{ forms.First_name }} {{ forms.Last_name }}</td>
+            <td>{{ forms.Job_title}}</td>
+            <td>{{ forms.Total }}</td>
+            <td>{{ forms.submit_time }}</td>
+            <td>{{ forms.Hod_status }}</td>
+            <input type="hidden" class="form_id" name="form_id" value="{{ forms.Form_id }}">
+        </tr>
+        {% endif %}
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endif %}
+
+
+
+
+
+{% endblock %}

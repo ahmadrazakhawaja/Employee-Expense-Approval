@@ -1,0 +1,139 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+
+{% if authenticated %}
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Expense Submission</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 text-center mr-2 ml-2">
+            <hr>
+        </div>
+    </div>
+    {% if normal!=true %}
+    <div class="row">
+        <div class="col-lg-2 text-right my-auto">
+            <span>Employee id:</span>
+        </div>
+        <div class="col-lg-2">
+            <input type="hidden" class="form_id" name="form_id" value="{{ form_id }}">
+            <input type="text" class="form-control" name="travel_date" value='{{ form_data[0].emp_id }}' disabled>
+        </div>
+        <div class="col-lg-2 offset-md-1 text-right my-auto">
+            <span>Employee Name</span>
+        </div>
+        <div class="col-lg-2">
+            <input type="text" class="form-control" name="return date" value='{{ form_data[0].First_name }} {{ form_data[0].Last_name }}' disabled>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-lg-2 text-right my-auto">
+            <span>Designation:</span>
+        </div>
+        <div class="col-lg-2">
+            <input type="text" class="form-control" name="travel_date" value='{{ form_data[0].Job_title }}' disabled>
+        </div>
+        <div class="col-lg-2 offset-md-1 text-right my-auto">
+            <span>Total amount:</span>
+        </div>
+        <div class="col-lg-2">
+            <input type="text" class="form-control" name="return date" value='{{ form_data[0].Total }}' disabled>
+        </div>
+    </div>
+     <div class="row">
+        <div class="col-lg-12 text-center mr-2 ml-2">
+            <hr>
+        </div>
+    </div>
+    {% endif %}
+    <div class="row">
+        <div class="col-lg-2 text-right my-auto">
+            <span>Travel Date:</span>
+        </div>
+        <div class="col-lg-2">
+            <input type="date" class="form-control" name="travel_date" value='{{ travel_date }}' disabled>
+        </div>
+        <div class="col-lg-2 offset-md-1 text-right my-auto">
+            <span>Retrun Date:</span>
+        </div>
+         <div class="col-lg-2">
+            <input type="date" class="form-control" name="return date" value='{{ return_date }}' disabled>
+        </div>
+    </div>
+    <table class="table table-bordered mt-4">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for items in data %}
+            <tr>
+                <td>
+                    <input type="Date" class="form-control" name="date" value="{{ items.Date }}" disabled=true>
+                </td>
+                <td>
+                     <textarea style="text-align: left;" class="form-control" rows="1" name="description" placeholder="enter description" disabled=true>{{ items.exp_name }}</textarea>
+                </td>
+                <td text-center>
+                    <input type="number" class="form-control" name="amount" placeholder="Enter amount" value="{{ items.amount }}" disabled>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% if Job==123 %}
+        {% if form_data[0].Hod_status=='Pending' %}
+        <div class="row mt-5 justify-content-between">
+                <div class="col-lg-4 text-center">
+                    <Button class="btn btn-danger btn-lg" data-toggle="modal" data-target="#exampleModalCenter">Decline</Button>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <Button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModalCenter">Approve</Button>
+                </div>
+            </div>
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Employee Expense Proposal</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to Decline the Expense Proposal?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger decline">Decline</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        {% endif %}
+</div>
+    {% endif %}
+    {% if normal==true %}
+    </div>
+    {% endif %}
+    {% if Job!=123 and normal!=true %}
+    </div>
+    {% endif %}
+
+
+{% endif %}
+
+
+
+
+
+{% endblock %}
+

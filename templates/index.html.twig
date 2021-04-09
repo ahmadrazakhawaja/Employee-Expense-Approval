@@ -1,0 +1,30 @@
+{% extends "news/layout.html" %}
+
+{% block body %}
+{% if user.is_authenticated %}
+
+{% else %}
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-6">
+        <h1 class="mb-5" style="text-align: left;">Do you Think Fake News is a Big problem?</h1>
+        <p class="lead mb-4">
+            Help Us in Solving this problem
+        </p>
+        <button class="btn btn-primary btn-lg">Register Now</button>
+      </div>
+      <div class="col-lg-6">
+        <div class="d-flex justify-content-end">
+            <img src="/static/network/fake_news.jpeg" class="rounded" alt="Fake News" width="80%">
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endif %}
+
+
+
+
+
+{% endblock %}

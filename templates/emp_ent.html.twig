@@ -1,0 +1,75 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+
+{% if department_id==2 %}
+{% if submit_alert %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Form submitted successfully</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+{% endif %}
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-lg-10">
+            <h2>Expense Submission</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 text-center mr-2 ml-2">
+            <hr>
+        </div>
+    </div>
+    <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Account</th>
+        <th>Account type</th>
+        <th>Employee ID</th>
+        <th>Date and Time</th>
+        <th>Debit</th>
+        <th>Credit</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for forms in data %}   
+            <tr class="clickable-row">
+                <td>301002   Expenses</td>
+                <td>Expense</td>
+                <td>{{ forms.emp_id }}</td>
+                <td>{{ forms.time}}</td>
+                <td>{{ forms.Total_amount }}</td>
+                <td style="border-top:0px;">0</td>
+                <input type="hidden" class="form_id" name="form_id" value="{{ forms.Form_id }}">  
+            </tr>
+            <tr class="clickable-row">
+                <td style="border-top:0px;">201001   Account Payable</td>
+                <td style="border-top:0px;">Liabilities</td>
+                <td style="border-top:0px;">{{ forms.emp_id }}</td>
+                <td style="border-top:0px;">{{ forms.time}}</td>
+                <td style="border-top:0px;">0</td>
+                <td style="border-top:0px;">{{ forms.Total_amount }}</td>
+                <input type="hidden" class="form_id" name="form_id" value="{{ forms.Form_id }}">
+            </tr>
+    {% endfor %}
+        <tr>
+            <td style="border-top:3px solid #a9a9a9;">-</td>
+            <td style="border-top:3px solid #a9a9a9;">-</td>
+            <td style="border-top:3px solid #a9a9a9;">-</td>
+             <td style="border-top:3px solid #a9a9a9;">-</td>
+            <td style="border-top:3px solid #a9a9a9;">{{Total}}</td>
+            <td style="border-top:3px solid #a9a9a9;">{{ Total }}</td>
+        </tr>
+    </tbody>
+    
+  </table>
+</div>
+{% endif %}
+
+
+
+
+
+{% endblock %}
